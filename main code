@@ -1,0 +1,162 @@
+import React,{useRef} from 'react';
+
+export default function App(){
+const aboutRef=useRef();
+const servicesRef=useRef();
+const contactRef=useRef();
+
+const company={
+ name:'Nexura Facility Management',
+ email:'nexurafms@gmail.com',
+ phones:['+91 87783 77991','+91 73958 46326'],
+ location:'Chennai, Tamil Nadu'
+};
+
+return(
+<div>
+
+<div style={{ background: 'linear-gradient(135deg, #2E003E, #6A0572)', padding: '16px 0' }}>
+  <div className="container header">
+    <div className="logo">
+      <img src="/images/logo.png" alt="Nexura logo" />
+    </div>
+    <nav className="nav">
+      <a onClick={() => aboutRef.current.scrollIntoView({ behavior: 'smooth' })}>About</a>
+      <a onClick={() => servicesRef.current.scrollIntoView({ behavior: 'smooth' })}>Services</a>
+      <a onClick={() => contactRef.current.scrollIntoView({ behavior: 'smooth' })}>Contact</a>
+    </nav>
+  </div>
+</div>
+
+<header className='container header'>
+<div className='logo'>
+<img src='/images/logo.png' alt='Nexura logo'/>
+<div>
+<h2>{company.name}</h2>
+<div style={{opacity:.8}}>End-to-end Facility Solutions</div>
+</div>
+</div>
+<nav className='nav'>
+<a onClick={()=>aboutRef.current.scrollIntoView({behavior:'smooth'})}>About</a>
+<a onClick={()=>servicesRef.current.scrollIntoView({behavior:'smooth'})}>Services</a>
+<a onClick={()=>contactRef.current.scrollIntoView({behavior:'smooth'})}>Contact</a>
+</nav>
+</header>
+
+<main className='container'>
+<section className='hero'>
+<div className='hero-center' style={{ marginTop: '-40px' }}>
+<img src='/images/logo.png' alt='Nexura logo'/>
+<h1 className='section-title'>Nexura Facility Management</h1>
+</div>
+
+<div>
+<p style={{fontSize:'1.25rem',opacity:.9,textAlign:'center'}}>
+Reliable facility management for commercial, residential, healthcare and industrial spaces.
+</p>
+<div style={{textAlign:'center'}}>
+<a className='btn' onClick={()=>contactRef.current.scrollIntoView({behavior:'smooth'})}>Get in Touch</a>
+</div>
+</div>
+
+
+</section>
+
+<section ref={aboutRef} style={{marginTop:72}}>
+<h2 className='section-title'>About Us</h2>
+<div className='glass'>
+<p>
+Nexura is a Chennai-based facility management company delivering end-to-end solutions that keep your spaces safe, clean, and efficient.
+We serve commercial complexes, IT parks, residential communities, hospitals, educational institutions, and industrial facilities with tailored,
+cost-effective services.
+</p>
+<p>
+Our core offerings include housekeeping and soft services, technical and MEP maintenance, security management, pantry and support staff,
+pest control, façade and horticulture care, waste management, and helpdesk/property support.
+</p>
+</div>
+</section>
+
+<section ref={servicesRef} style={{marginTop:72}}>
+<h2 className='section-title'>Our Services</h2>
+<div className='grid grid-3'>
+<div className='glass'><h3>Soft Services</h3><p>Housekeeping, pantry staff, pest control, waste management</p></div>
+<div className='glass'><h3>Technical & MEP</h3><p>Electrical, HVAC, plumbing, STP/WTP maintenance</p></div>
+<div className='glass'><h3>Security & Support</h3><p>Security staff, helpdesk, property support</p></div>
+</div>
+</section>
+
+<section style={{marginTop:72}}>
+<h2 className='section-title'>Why Choose Nexura</h2>
+<div className='grid grid-2'>
+<div className='glass'>Experienced engineering team with on-ground expertise.</div>
+<div className='glass'>Preventive maintenance and safety-first operations.</div>
+<div className='glass'>Transparent reporting and compliance focus.</div>
+<div className='glass'>Quick turnaround and responsive support.</div>
+</div>
+</section>
+
+<section style={{marginTop:72}}>
+<h2 className='section-title'>Projects</h2>
+<div className='grid grid-3'>
+<div className='glass'>Residential Tower — MEP O&M</div>
+<div className='glass'>Corporate Office Campus — Soft Services</div>
+<div className='glass'>Apartment Complex — Landscaping & Pool</div>
+</div>
+</section>
+
+<section ref={contactRef} style={{marginTop:72}}>
+<h2 className='section-title'>Contact Us</h2>
+<div className='glass'>
+<form action='https://formspree.io/f/xvzpooer' method='POST'>
+<label>Name<input name='name' required/></label>
+<label>Email<input type='email' name='email' required/></label>
+<label>Phone<input name='phone' required/></label>
+<label>Requirement
+<select name='requirement' required>
+<option value=''>Select service</option>
+<option>Housekeeping & Soft Services</option>
+<option>Technical / MEP Maintenance</option>
+<option>Security Management</option>
+<option>Pest Control & Waste</option>
+<option>Horticulture & Facade</option>
+</select>
+</label>
+<button className='btn' type='submit'>Submit</button>
+</form>
+</div>
+
+<div style={{ marginTop: '32px' }} className="glass">
+  <h3>Quick Info</h3>
+  <p><strong>Email:</strong> {company.email}</p>
+  {company.phones.map(p => (
+    <p key={p}><strong>Phone:</strong> {p}</p>
+  ))}
+  <p><strong>Location:</strong> {company.location}</p>
+</div>
+</section>
+</main>
+
+<footer>
+<div className='container footer-grid'>
+<div>
+<h3>{company.name}</h3>
+<p>Chennai-based end-to-end facility management solutions.</p>
+</div>
+<div>
+<h4>Quick Links</h4>
+<p>About</p>
+<p>Services</p>
+<p>Why Nexura</p>
+<p>Contact</p>
+</div>
+<div>
+<h4>Contact</h4>
+<p>{company.email}</p>
+{company.phones.map(p=><p key={p}>{p}</p>)}
+</div>
+</div>
+</footer>
+</div>
+);
+}
